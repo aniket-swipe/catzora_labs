@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --canvas: 248 250 252;
+    --surface: 255 255 255;
+    --sunken: 241 245 249;
+    --ink: 15 23 42;
+    --muted: 100 116 139;
+    --faint: 148 163 184;
+    --line: 226 232 240;
+
+    --accent: 79 70 229;
+    --accent-soft: 238 242 255;
+    --create: 139 92 246;
+    --create-soft: 245 243 255;
+    --grow: 13 148 136;
+    --grow-soft: 240 253 250;
+    --hire: 217 119 6;
+    --hire-soft: 255 251 235;
+    --automate: 37 99 235;
+    --automate-soft: 239 246 255;
+    --support: 219 39 119;
+    --support-soft: 253 242 248;
+
+    --success: 22 163 74;
+    --warning: 202 138 4;
+    --danger: 220 38 38;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --canvas: 2 6 23;
+    --surface: 15 23 42;
+    --sunken: 30 41 59;
+    --ink: 241 245 249;
+    --muted: 148 163 184;
+    --faint: 100 116 139;
+    --line: 30 41 59;
+
+    --accent: 129 140 248;
+    --accent-soft: 30 27 75;
+    --create: 167 139 250;
+    --create-soft: 46 16 101;
+    --grow: 45 212 191;
+    --grow-soft: 19 78 74;
+    --hire: 251 191 36;
+    --hire-soft: 69 26 3;
+    --automate: 96 165 250;
+    --automate-soft: 23 37 84;
+    --support: 244 114 182;
+    --support-soft: 80 7 36;
+
+    --success: 74 222 128;
+    --warning: 250 204 21;
+    --danger: 248 113 113;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-canvas;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-line bg-surface shadow-card;
+  }
+  .field {
+    @apply w-full rounded-md border border-line bg-surface px-3 text-sm text-ink
+           placeholder:text-faint focus:border-accent focus:outline-none
+           focus:ring-2 focus:ring-accent/25 disabled:opacity-60;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-line;
+  }
+}
